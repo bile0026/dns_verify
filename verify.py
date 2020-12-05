@@ -19,7 +19,7 @@ for dns_server in dns_servers:
         with open(report_filename, 'w') as report:
             csvwriter = csv.writer(report)
             fields = ['Record', 'Assumed Address',
-                      'Response Address' 'Type', 'Result']
+                      'Response Address', 'Type', 'DNS Server', 'Result']
             csvwriter.writerow(fields)
 
             for record in csv.reader(records):
@@ -29,18 +29,18 @@ for dns_server in dns_servers:
                         qname=record[0], rdtype=record[2], search=dns_server)
                     for rdata in answers:
                         if (record[1] == rdata.address):
-                            print('Host', record[0], 'Address',
+                            print('Response from', dns_server, 'Host', record[0], 'Address',
                                   rdata.address, 'matches!')
                             row = [record[0], record[1], rdata.address,
-                                   record[2], 'Record Matches']
+                                   record[2], dns_server, 'Record Matches']
                             csvwriter.writerow(row)
                         else:
-                            print('Host', record[0], 'Address',
+                            print('Response from', dns_server, 'Host', record[0], 'Address',
                                   rdata.address, 'DOES NOT MATCH!')
                             row = [record[0], record[1], rdata.address,
-                                   record[2], 'Record Does Not Match']
+                                   record[2], dns_server, 'Record Does Not Match']
                             csvwriter.writerow(row)
                 except dns.resolver.NoAnswer as e:
                     print(e)
-                    row = [e]
+                    row = [record[0], record[1], ' ', record[2], dns_server, e]
                     csvwriter.writerow(row)
