@@ -1,3 +1,3 @@
-record, data
-dns.google.com,8.8.8.8
-dns.cloudflare.com,1.1.1.1
+dns.google.com,8.8.8.8,A
+dns.cloudflare.com,1.1.1.1,A
+aspmx.l.google.com,142.250.128.27,MX

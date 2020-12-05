@@ -1,7 +1,15 @@
-import dnspython as dns
+import dns.query as query
+import dns.resolver as resolver
 import csv
 
-with open('dns.csv', newline='') as csvfile:
-    spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
-    for row in spamreader:
-        print(', '.join(row))
+filename = "dns.csv"
+
+with open(filename, 'r') as records:
+    for record in csv.reader(records):
+        # print(record)
+        try:
+            answers = resolver.query(record[0], record[2])
+            for rdata in answers:
+                print('Host', record[0], 'Address', rdata.address)
+        except resolver.NoAnswer as e:
+            print(e)
