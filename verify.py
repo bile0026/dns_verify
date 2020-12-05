@@ -1,4 +1,3 @@
-import dns.query as query
 import dns.resolver as resolver
 import csv
 
