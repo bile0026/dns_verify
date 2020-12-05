@@ -10,7 +10,7 @@ filename = "dns.csv"
 cur_date = datetime.now().strftime("%m-%d-%Y")
 cur_time = datetime.now().strftime("%H-%M")
 dns_servers = ["8.8.8.8", "1.1.1.1"]
-report_filename = "report_" + cur_date + "_" + cur_time + ".csv"
+report_filename = "reports/report_" + cur_date + "_" + cur_time + ".csv"
 
 
 with open(filename, 'r') as records:
