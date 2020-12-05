@@ -8,7 +8,7 @@ with open(filename, 'r') as records:
     for record in csv.reader(records):
         # print(record)
         try:
-            answers = resolver.query(record[0], record[2])
+            answers = resolver.resolve(record[0], record[2])
             for rdata in answers:
                 print('Host', record[0], 'Address', rdata.address)
         except resolver.NoAnswer as e:
