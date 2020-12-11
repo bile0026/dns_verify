@@ -2,6 +2,3 @@ dns.google.com,8.8.8.8,A
 dns.cloudflare.com,1.1.1.1,A
 aspmx.l.google.com,142.250.128.27,MX
 dnspython.org,aspmx.l.google.com.,MX
-sisulink.com,23.236.62.147,A
-sisulink.com,sisulink-com.mail.protection.outlook.com.,MX
-sisulink.com,v=spf1 include:spf.protection.outlook.com -all,TXT
